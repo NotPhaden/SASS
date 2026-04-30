@@ -1,0 +1,256 @@
+<head>
+<meta charset="UTF-8">
+<title>Status Bănci</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #020617;
+    color: white;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 20% 20%, #0ea5e9 0%, transparent 40%),
+        radial-gradient(circle at 80% 30%, #6366f1 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, #22c55e 0%, transparent 40%);
+    opacity: 0.4;
+    filter: blur(100px);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 20px;
+}
+
+.glass {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.sidebar {
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.nav-title {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #94a3b8;
+    margin-bottom: 10px;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #94a3b8;
+    transition: 0.2s;
+}
+
+.nav-btn:hover {
+    background: rgba(255,255,255,0.05);
+    color: white;
+}
+
+.nav-btn.active {
+    background: #2563eb;
+    color: white;
+}
+
+.main {
+    padding: 25px;
+    border-radius: 20px;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    padding: 15px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(30,58,138,0.4), rgba(16,185,129,0.25));
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+input, textarea {
+    width: 100%;
+    background: rgba(0,0,0,0.3);
+    border: none;
+    padding: 8px;
+    color: white;
+    border-radius: 6px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background: #2563eb;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+
+<div class="sidebar glass">
+
+<div class="nav-title">SAS SYSTEM</div>
+
+<div class="nav-btn active" onclick="showSection('form', this)">
+<i class="fa-solid fa-pen"></i>
+<div>
+<b>Status Banci</b>
+<small>Formular</small>
+</div>
+</div>
+
+<div class="nav-btn" onclick="showSection('listaSect', this)">
+<i class="fa-solid fa-database"></i>
+<div>
+<b>Status Salvate</b>
+<small>Vizualizare</small>
+</div>
+</div>
+
+</div>
+
+
+<div class="main glass">
+
+<div class="header">
+<h2 id="title">Status Bănci - Formular</h2>
+</div>
+
+<div id="form" class="section active">
+<div class="grid">
+
+<div class="card">
+<div>Locație:</div>
+<input id="locatie" type="text">
+</div>
+
+<div class="card">
+<div>Ora:</div>
+<input id="ora" type="text" placeholder="Ex: 14:30">
+</div>
+
+<div class="card">
+<div>Data:</div>
+<input id="data" type="text" placeholder="Scrii manual ex: 30.04.2026">
+</div>
+
+<div class="card">
+<div>Mențiuni:</div>
+<textarea id="mentiuni"></textarea>
+</div>
+
+<div class="card">
+<button onclick="salveaza()">SALVEAZĂ</button>
+</div>
+
+</div>
+</div>
+
+<div id="listaSect" class="section">
+<div class="grid" id="lista"></div>
+</div>
+
+</div>
+</div>
+
+<script>
+let statusuri = JSON.parse(localStorage.getItem("statusuri")) || [];
+
+function showSection(id, el){
+    document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+
+    document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
+    el.classList.add("active");
+
+    document.getElementById("title").innerText =
+        id === "form" ? "Status Bănci - Formular" : "Status Salvate";
+}
+
+function salveaza(){
+    let locatie = document.getElementById("locatie").value;
+    let ora = document.getElementById("ora").value;
+    let data = document.getElementById("data").value;
+    let mentiuni = document.getElementById("mentiuni").value;
+
+    if(!locatie || !ora || !data){
+        alert("Completează toate câmpurile!");
+        return;
+    }
+
+    let obiect = { locatie, ora, data, mentiuni };
+
+    statusuri.push(obiect);
+    localStorage.setItem("statusuri", JSON.stringify(statusuri));
+
+    afiseaza();
+
+    document.getElementById("locatie").value = "";
+    document.getElementById("ora").value = "";
+    document.getElementById("data").value = "";
+    document.getElementById("mentiuni").value = "";
+}
+
+function afiseaza(){
+    let lista = document.getElementById("lista");
+    lista.innerHTML = "";
+
+    statusuri.forEach(s => {
+        let card = `
+        <div class="card">
+            <b>${s.locatie}</b><br><br>
+            Ora: ${s.ora}<br>
+            Data: ${s.data}<br>
+            Mențiuni: ${s.mentiuni}
+        </div>
+        `;
+        lista.innerHTML += card;
+    });
+}
+
+window.onload = afiseaza;
+</script>
+
+</body>
+

@@ -1,0 +1,218 @@
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #020617;
+    color: white;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+
+    background:
+        radial-gradient(circle at 20% 20%, #0ea5e9 0%, transparent 40%),
+        radial-gradient(circle at 80% 30%, #6366f1 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, #22c55e 0%, transparent 40%);
+
+    opacity: 0.4;
+    filter: blur(100px);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 20px;
+}
+
+.glass {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.sidebar {
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.nav-title {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #94a3b8;
+    margin-bottom: 10px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #94a3b8;
+    transition: 0.2s;
+}
+
+.nav-link:hover {
+    background: rgba(255,255,255,0.05);
+    color: white;
+}
+
+.nav-link.active {
+    background: #2563eb;
+    color: white;
+}
+
+.nav-link small {
+    display: block;
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+.main {
+    padding: 25px;
+    border-radius: 20px;
+}
+
+
+.header {
+    margin-bottom: 25px;
+}
+
+.header h1 {
+    margin: 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    padding: 20px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(30,58,138,0.4), rgba(16,185,129,0.25));
+    border: 1px solid rgba(255,255,255,0.08);
+    text-decoration: none;
+    color: white;
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #38bdf8;
+}
+
+.card i {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #38bdf8;
+}
+
+.card h3 {
+    margin: 5px 0;
+}
+
+.card p {
+    font-size: 13px;
+    color: #cbd5f5;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+
+<div class="sidebar glass">
+
+<div class="nav-title">SAS SYSTEM</div>
+
+<a href="index.html" class="nav-link active">
+<i class="fa-solid fa-house"></i>
+<div>
+<b>Dashboard</b>
+<small>Pagina principală</small>
+</div>
+</a>
+
+<a href="banci.html" class="nav-link">
+<i class="fa-solid fa-radio"></i>
+<div>
+<b>Status Banci</b>
+<small>Vizualizare Status Banci</small>
+</div>
+</a>
+
+<a href="procesare.html" class="nav-link">
+<i class="fa-solid fa-circle-info"></i>
+<div>
+<b>Model Procesare Rapida</b>
+<small>Instrucțiuni utilizare</small>
+</div>
+</a>
+
+
+
+<a href="concediu.html" class="nav-link">
+<i class="fa-solid fa-file-signature"></i>
+<div>
+<b>Cerere Concediu</b>
+<small>Formular solicitare</small>
+</div>
+</a>
+
+</div>
+
+
+<div class="main glass">
+
+<div class="header">
+<h1>Dashboard Sistem</h1>
+<p style="color:#94a3b8;">Acces rapid la module</p>
+</div>
+
+<div class="grid">
+
+<a href="banci.html" class="card">
+<i class="fa-solid fa-radio"></i>
+<h3>Status Banci</h3>
+<p>Vizualizare Banci </p>
+</a>
+
+
+<a href="procesare.html" class="card">
+<i class="fa-solid fa-circle-info"></i>
+<h3>Model Procesare Rapida</h3>
+<p>Instrucțiuni utilizare sistem</p>
+</a>
+
+
+<a href="concediu.html" class="card">
+<i class="fa-solid fa-file-signature"></i>
+<h3>Cerere Concediu</h3>
+<p>Trimite solicitare</p>
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
