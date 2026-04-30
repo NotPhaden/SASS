@@ -1,0 +1,196 @@
+<head>
+        <link rel="icon" type="image/png" href="logo.png">
+<meta charset="UTF-8">
+<title>Sistem S.A.S</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #020617;
+    color: white;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background:
+        radial-gradient(circle at 20% 20%, #0ea5e9 0%, transparent 40%),
+        radial-gradient(circle at 80% 30%, #6366f1 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, #22c55e 0%, transparent 40%);
+    opacity: 0.4;
+    filter: blur(100px);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 20px;
+}
+
+.glass {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.sidebar {
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.nav-title {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #94a3b8;
+    margin-bottom: 10px;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #94a3b8;
+    transition: 0.2s;
+}
+
+.nav-btn:hover {
+    background: rgba(255,255,255,0.05);
+    color: white;
+}
+
+.nav-btn.active {
+    background: #ef4444;
+    color: white;
+}
+
+.main {
+    padding: 25px;
+    border-radius: 20px;
+}
+
+.header {
+    margin-bottom: 20px;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.sanctiune {
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+    background: rgba(30, 41, 59, 0.6);
+    border-left: 4px solid #ef4444;
+}
+
+.titlu {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+
+<div class="sidebar glass">
+
+<div class="nav-title">S.A.S SYSTEM</div>
+
+<div class="nav-btn active" onclick="showSection('sanctiuni', this)">
+<i class="fa-solid fa-triangle-exclamation"></i>
+<div>
+<b>Sanctiuni S.A.S</b>
+<small>Regulament intern</small>
+</div>
+</div>
+
+</div>
+
+
+<div class="main glass">
+
+<div class="header">
+<h2 id="title">❗ Lista sancțiuni S.A.S ❗</h2>
+</div>
+
+<div id="sanctiuni" class="section active">
+
+<div class="sanctiune">Masca pokemon / lipsa vesta sau masca: <b>100.000</b></div>
+
+<div class="sanctiune">Lipsa seriozitate / deranjare regrupare: <b>300.000</b></div>
+
+<div class="sanctiune">Comportament cu suspecții: <b>350.000</b></div>
+
+<div class="sanctiune">Folosirea echipamentului / armamentului incorect: <b>750.000</b></div>
+
+<div class="sanctiune">Vorbit peste coordonator: <b>500.000</b></div>
+
+<div class="sanctiune">Lipsa truse: <b>150.000</b></div>
+
+<div class="sanctiune">NEASCULTARE COORDONATOR: <b>1.000.000</b></div>
+
+<div class="sanctiune">Neoferire truse: <b>150.000</b></div>
+
+<div class="sanctiune">Neparticiparea la razii (fără motiv): <b>100.000</b></div>
+
+<div class="sanctiune">Furat heli fără aprobare: <b>150.000</b></div>
+
+<div class="sanctiune">Intervenire la craft-uri fără aprobare: <b>300.000</b></div>
+
+<div class="sanctiune">Adunare greșită la regrupare SAS: <b>150.000</b></div>
+
+<div class="sanctiune">Intervenție la magazine ca SAS: <b>250.000</b></div>
+
+<div class="sanctiune">Oferire S fals / necorect: <b>250.000</b></div>
+
+<div class="sanctiune">Absență ședință fără invoire: <b>150.000</b></div>
+
+<div class="sanctiune">Strigat pe nume în public: <b>200.000</b></div>
+
+<div class="sanctiune">Schimbare în SAS fără aprobare: <b>200.000</b></div>
+
+<div class="sanctiune">Nefolosire S pe stație: <b>100.000</b></div>
+
+<div class="sanctiune">Comentarii fără rost: <b>150.000</b></div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+function showSection(id, el){
+    document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+
+    document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
+    el.classList.add("active");
+
+    document.getElementById("title").innerText = "❗ Lista sancțiuni S.A.S ❗";
+}
+</script>
+
+</body>
