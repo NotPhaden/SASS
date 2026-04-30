@@ -1,0 +1,256 @@
+<head>
+    <link rel="icon" type="image/png" href="logo.png">
+<meta charset="UTF-8">
+<title>Sistem Comunicații</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #020617;
+    color: white;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+
+    background:
+        radial-gradient(circle at 20% 20%, #0ea5e9 0%, transparent 40%),
+        radial-gradient(circle at 80% 30%, #6366f1 0%, transparent 40%),
+        radial-gradient(circle at 50% 80%, #22c55e 0%, transparent 40%);
+
+    opacity: 0.4;
+    filter: blur(100px);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 20px;
+}
+
+.glass {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.08);
+}
+
+.sidebar {
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.nav-title {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #94a3b8;
+    margin-bottom: 10px;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #94a3b8;
+    transition: 0.2s;
+}
+
+.nav-btn:hover {
+    background: rgba(255,255,255,0.05);
+    color: white;
+}
+
+.nav-btn.active {
+    background: #2563eb;
+    color: white;
+}
+
+.nav-btn small {
+    display: block;
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+.main {
+    padding: 25px;
+    border-radius: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.card {
+    padding: 15px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(30,58,138,0.4), rgba(16,185,129,0.25));
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: 0.2s;
+}
+
+.card:hover {
+    border-color: #38bdf8;
+    transform: translateY(-3px);
+}
+
+.code {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.desc {
+    font-size: 14px;
+    color: #cbd5f5;
+}
+
+.tag {
+    float: right;
+    font-size: 10px;
+    padding: 4px 6px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.08);
+    color: #38bdf8;
+}
+
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+
+<div class="sidebar glass">
+
+<div class="nav-title">SAS SYSTEM</div>
+
+<div class="nav-btn active" onclick="showSection('codes', this)">
+<i class="fa-solid fa-map"></i>
+<div>
+<b>Hartă Cayo</b>
+<small>Vizualizare hartă</small>
+</div>
+</div>
+
+<div class="nav-btn" onclick="showSection('vest', this)">
+<i class="fa-solid fa-user-secret"></i>
+<div>
+<b>Vestimentație</b>
+<small>Măști & uniforme</small>
+</div>
+</div>
+
+<br>
+<a href="index.html" style="color:#94a3b8;text-decoration:none;">← Pagina principală</a>
+
+</div>
+
+
+<div class="main glass">
+
+<div class="header">
+<h2 id="title">Hartă Cayo</h2>
+</div>
+
+
+<div id="codes" class="section active">
+
+<div style="margin-bottom:20px;">
+<img src="https://media.discordapp.net/attachments/1463997455057027410/1465058367805325404/image.png?ex=69f44f2e&is=69f2fdae&hm=d97ecb22846d0f92577f1bb1a53ce8160f7efb879d139b8d045a2736ba632a10&=&format=webp&quality=lossless&width=960&height=960" style="width:100%; border-radius:15px;">
+</div>
+
+</div>
+
+
+<div id="vest" class="section">
+<div class="grid">
+
+<div class="card">
+<img src="https://media.discordapp.net/attachments/1463997490306220134/1481234384412606556/E4E05A1E-7142-4354-ACBF-50A7F576EEB0.png?ex=69f3d4c5&is=69f28345&hm=1760b98c5b540fecf229e90ad9a8d95bdf89fa1c0a1845189304d69602097835&=&format=webp&quality=lossless" style="width:100%; border-radius:10px; margin-bottom:10px;">
+<span class="tag">MASCA</span>
+<div class="code">126 - 0</div>
+<div class="desc">Agent în Teste (Default)</div>
+</div>
+
+<div class="card">
+<img src="https://media.discordapp.net/attachments/1463997490306220134/1481234511588229211/4371092F-FECB-41B6-8333-842B2C1BE59A.png?ex=69f3d4e3&is=69f28363&hm=07cf84429279b8fcbaec5c636f110b0b22f03d5bca54440a3cf16baa4720b569&=&format=webp&quality=lossless" style="width:100%; border-radius:10px; margin-bottom:10px;">
+<span class="tag">MASCA</span>
+<div class="code">51 - 1</div>
+<div class="desc">Agent</div>
+</div>
+
+<div class="card">
+<img src="https://media.discordapp.net/attachments/1463997490306220134/1481234566730748067/A32BCD15-CAD3-413B-A8E8-8F63299FC9DA.png?ex=69f3d4f0&is=69f28370&hm=211224ca5be3bf463a38fc11617cfb26ff8a3d11fad4ed6a67bf2b2e35d697fc&=&format=webp&quality=lossless" style="width:100%; border-radius:10px; margin-bottom:10px;">
+<span class="tag">MASCA</span>
+<div class="code">54 - 0</div>
+<div class="desc">Agent Special</div>
+</div>
+
+<div class="card">
+<img src="https://media.discordapp.net/attachments/1463997490306220134/1481234930330767471/F916CB82-BE97-4468-893D-5DE38A60AE25.png?ex=69f3d547&is=69f283c7&hm=345930740b7293c6ce0c1400f4b92e3efb946edc5938bb6a0d123f9b286e0129&=&format=webp&quality=lossless" style="width:100%; border-radius:10px; margin-bottom:10px;">
+<span class="tag">MASCA</span>
+<div class="code">169 - 16</div>
+<div class="desc">Medic</div>
+</div>
+
+<div class="card">
+<img src="https://media.discordapp.net/attachments/1463997490306220134/1499322381833998477/image.png?ex=69f46047&is=69f30ec7&hm=639e6050dd30302e1030c873c21865d5816b0da8978846080da1984e1f9b087f&=&format=webp&quality=lossless" style="width:100%; border-radius:10px; margin-bottom:10px;">
+<span class="tag">MASCA</span>
+<div class="code">54 - 4</div>
+<div class="desc">BTI</div>
+</div>
+
+</div>
+</div>
+
+</div>
+
+</div>
+
+<script>
+function showSection(id, el){
+    document.querySelectorAll(".section").forEach(s=>s.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+
+    document.querySelectorAll(".nav-btn").forEach(b=>b.classList.remove("active"));
+    el.classList.add("active");
+
+    if(id === "codes"){
+        document.getElementById("title").innerText = "Hartă Cayo";
+    } else {
+        document.getElementById("title").innerText = "Vestimentație";
+    }
+}
+</script>
+
+</body>
